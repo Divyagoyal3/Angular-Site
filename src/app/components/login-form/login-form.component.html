@@ -1,0 +1,20 @@
+<app-header></app-header>
+<div class="container1">
+    <div class="login-container">
+        <p class="login-heading">If Already Registered Log In below</p>
+        <form [formGroup]="loginForm" class="login-form">
+            <div class="form-group">
+
+                <label class="labelStyling">Email: <input type="email" class="form-control" formControlName="email" /></label>
+            </div><br>
+            <div class="form-group">
+
+                <label class="labelStyling">Password: <input type="password" class="form-control" formControlName="password" /></label>
+            </div><br>
+            <button type="submit"  (click)="onsubmit()"
+                class="btn-login">Login</button>
+        </form>
+        <a routerLink='/signup' class="signup-link">New User?</a>
+    </div>
+</div>
+<app-footer></app-footer>

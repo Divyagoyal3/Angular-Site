@@ -1,0 +1,26 @@
+
+<header >
+    <div class="navbar navbar-dark bg-primary shadow">
+        <div class="container-fluid" >
+            <div class="navbar-brand align-item-center d-flex" style="margin-left:  10px">
+                <button class="btn btn-primary ml-2"  (click)="backToProducts()">
+                <i style="font-size: 2rem;" class="fas fa-shipping-fast" ></i>
+                <strong style="font-size: 1.5rem;margin-left: 8px;">ShopNow</strong>
+                </button>
+            </div>
+            <!-- <button (click)="toggleTheme()">Toggle Theme</button> -->
+
+            <div class="d-flex flex-grow-2 " style="margin-right: 30px;">  
+                <button routerLink="wishlist" class="btn btn-primary ml-2">
+                    <i class="bi bi-bag-heart" style="font-size: 1.5rem;"></i>
+                    <div style="font-size: 0.75rem;" class="badge bg-danger">{{ getWishlistItemCount() }}</div>
+                </button>
+                <button routerLink="cart" class="btn btn-primary ml-2">
+                    <i style="font-size: 1.5rem;" class="fas fa-cart-plus"></i>
+                    <div style="font-size: 0.75rem;" class="badge bg-danger">{{ totalItem }}</div>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+

@@ -1,0 +1,103 @@
+.custom-toast {
+    background: linear-gradient(135deg, #007bff, #00c6ff); /* Blue gradient background */
+    color: rgb(255, 255, 255); /* White text color */
+    font-size: 18px; /* Larger font size for better readability */
+    border-radius: 12px; /* Increased border radius for smoother edges */
+    position: fixed; /* Position fixed so it stays in the same place when scrolling */
+    top: 12%; /* Distance from the top of the viewport */
+    right: 20px; /* Distance from the right of the viewport */
+    z-index: 9999; /* Ensure it appears above other content */
+    width: 30%; /* Adjust width as needed */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+    animation: slideInRight 0.5s ease-out forwards, fadeIn 0.5s ease-out forwards; /* Slide in and fade in animation */
+    opacity: 0; /* Start with 0 opacity to trigger fadeIn animation */
+}
+
+.custom-toast .toast-title {
+    font-weight: bold; /* Bold title */
+    margin: 20px;
+}
+
+.custom-toast .toast-message {
+    margin: 8px 20px; /* Add some margin between title and message */
+}
+
+@keyframes slideInRight {
+    from {
+        right: -100%;
+    }
+    to {
+        right: 20px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* :root{
+    --color-bg:rgb(13 110 253);
+    --color-text:white;
+    --color-nav:blue;
+}
+[data-theme="dark"]{
+    --color-bg:black;
+    --color-text:white;
+    --color-nav:black;
+} */
+
+/* 
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+  } */
+
+
+
+
+
+
+  /* styles.scss */
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+  
+    /* Dark mode variables */
+    --dark-primary-color: #343a40;
+    --dark-secondary-color: #6c757d;
+    --dark-background-color: #212529;
+  }
+  
+  .light-theme {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+  }
+  
+  .dark-theme {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+  
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+  
+    /* Override with dark mode variables */
+    --primary-color: var(--dark-primary-color);
+    --secondary-color: var(--dark-secondary-color);
+    --background-color: var(--dark-background-color);
+  }
+  

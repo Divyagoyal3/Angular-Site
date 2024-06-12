@@ -1,0 +1,8 @@
+<div class="slider-container">
+    <div class="slider-track" [@slide]="sliderPosition">
+      <div class="slide" *ngFor="let image of images">
+        <img [src]="image" alt="Slide">
+      </div>
+    </div>
+  </div>
+  

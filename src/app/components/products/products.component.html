@@ -1,0 +1,107 @@
+<div class="container2" *ngIf="dataLoaded" >
+    <div class="parent-container">
+        <div class="searchBar">
+            <input type="text" [(ngModel)]="query" placeholder="Search Products" class="search-input">
+            <span class="search-icon"><i class="fas fa-search"></i></span>
+        </div>
+        <div class="sort-options">
+            <label for="sortOptions" style="color:black;">Sort:</label>
+            <select id="sortOptions" [(ngModel)]="selectedSortOption" (change)="sortProducts()">
+                <option style="color:#000000" value="default">--Default</option>
+                <option value="asc" style="color: #000000;"> Low Price to High Price</option>
+                <option value="desc" style="color: #000000;"> High Price to Low Price</option>
+            </select>   
+        </div>
+    </div>
+    <!-- <button (click)="toggleTheme()">
+        Toggle Mode
+      </button> -->
+
+     <!-- <div class="price-filter">
+        <label for="minPrice">Min Price:</label>
+        <input type="number" id="minPrice" [(ngModel)]="minPrice">
+        <label for="maxPrice">Max Price:</label>
+        <input type="number" id="maxPrice" [(ngModel)]="maxPrice">
+        <button (click)="filterByPrice()">Apply</button>
+    </div>
+     -->
+    <!-- <div class="sort-options">
+        <button (click)="sortByPriceAsc()">Sort by Price (Low to High)</button>
+        <button (click)="sortByPriceDesc()">Sort by Price (High to Low)</button>
+    </div>  -->
+
+    <!-- -------------------correct -->
+    <!-- <div class="price-filter">
+        <label for="minPrice">Min Price:</label>
+        <input type="number" id="minPrice" [(ngModel)]="minPrice">
+        <label for="maxPrice">Max Price:</label>
+        <input type="number" id="maxPrice" [(ngModel)]="maxPrice">
+        <button (click)="filterByPrice()">Apply</button>
+    </div> -->
+    <!-- -------------------correct -->
+
+
+
+    <div class="row">
+        <ng-container *ngFor="let item of filterCategory | search: query">
+            <div class="card col-md-3">
+                <img src="{{item.image}}" alt="">
+                <h5
+                    style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;margin-top: 5%;">
+                    {{item.title}}</h5>
+                <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+                    {{item.description}}</p>
+                <p><strong>Price:</strong> ${{item.price}}</p>
+                <span>
+                    <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]" (click)="handleRatingClick(item, star)"
+                        [style.color]="star <= item.rating ? 'gold' : 'gray'">
+                        star
+                    </mat-icon>
+                </span>
+                <button class="btn btn-primary theme-color" (click)=addtocart(item)>Add to cart</button>
+                <span class="wishlist-icon">
+                    <svg [ngClass]="{'coloring': isWishlisted(item.id)}" (click)="addOrRemoveFromWishlist(item)"
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <ng-container *ngIf="!isWishlisted(item.id)">
+                            <path class="bi-heart"
+                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.920 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.090.083.176.171a3 3 0 0 1 .176-.17C12.720-3.042 23.333 4.867 8 15" />
+                        </ng-container>
+                        <ng-container *ngIf="isWishlisted(item.id)">
+                            <path class="bi-heart-fill" fill-rule="evenodd"
+                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+                        </ng-container>
+
+                    </svg>
+                </span>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div *ngIf="errorMsg" class="error">
+    <div class="apiError">Error Loading Data</div>
+</div>
+<button (click)="scrollToTop()" class="back-to-top">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-arrow-up"
+    >
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+  
+<div *ngIf="!errorMsg">
+    <div *ngIf="showFooter">
+        <app-footer></app-footer>
+    </div>
+</div>
